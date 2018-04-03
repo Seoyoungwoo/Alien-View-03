@@ -10,16 +10,30 @@ import UIKit
 
 class ViewController: UIViewController {
 
+      var counter = 1
+      var direction = true
+      
+      @IBOutlet weak var alienlable: UILabel!
+      @IBOutlet weak var alienimage: UIImageView!
       override func viewDidLoad() {
             super.viewDidLoad()
-            // Do any additional setup after loading the view, typically from a nib.
+            alienimage.image = UIImage(named: "frame1.png")
       }
 
-      override func didReceiveMemoryWarning() {
-            super.didReceiveMemoryWarning()
-            // Dispose of any resources that can be recreated.
+      @IBAction func Update(_ sender: Any) {
+            if counter == 5 {
+                  direction = false
+            } else if counter == 1{
+                  direction = true
+            }
+            
+            if direction == true {
+                  counter = counter + 1
+            } else if direction == false {
+                  counter = counter - 1
+            }
+            alienimage.image = UIImage(named: "frame\(counter).png")
+            alienlable.text = "\(counter)"
       }
-
-
 }
 
